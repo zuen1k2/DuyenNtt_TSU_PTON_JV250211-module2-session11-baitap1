@@ -1,9 +1,24 @@
 import React from 'react'
+import Item from './Item';
 
 export default function Cart() {
+  const dataCart = [
+    {
+      id: 4,
+      name: "Cake",
+      price: 10,
+      quantityOder: 15,
+    },
+    {
+      id: 2,
+      name: "Hamburger",
+      price: 15,
+      quantityOder: 32,
+    },
+  ];
   return (
     <>
-      <div>
+      
         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div className="panel panel-danger">
             <div className="panel-heading">
@@ -21,58 +36,39 @@ export default function Cart() {
                   </tr>
                 </thead>
                 <tbody id="my-cart-body">
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Cake</td>
-                    <td>10 USD</td>
-                    <td>
-                      <input
-                        name="cart-item-quantity-1"
-                        type="number"
-                        defaultValue={15}
-                      />
-                    </td>
-                    <td>
-                      <a
-                        className="label label-info update-cart-item"
-                        data-product=""
-                      >
-                        Update
-                      </a>
-                      <a
-                        className="label label-danger delete-cart-item"
-                        data-product=""
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Hamburger</td>
-                    <td>15 USD</td>
-                    <td>
-                      <input
-                        name="cart-item-quantity-1"
-                        type="number"
-                        defaultValue={32}
-                      />
-                    </td>
-                    <td>
-                      <a
-                        className="label label-info update-cart-item"
-                        data-product=""
-                      >
-                        Update
-                      </a>
-                      <a
-                        className="label label-danger delete-cart-item"
-                        data-product=""
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
+                  {dataCart && 
+                  dataCart.map((item,index)=> {
+                    return (
+                      <tr key={item.id} >
+                      <th scope="row"> {index + 1} </th>
+                      <td> {item.name} </td>
+                      <td>{item.price} USD</td>
+                      <td>
+                        <input
+                          name={`cart-item-quantity-${item.id}`}
+                          type="number"
+                          defaultValue={item.quantityOder}
+                        />
+                      </td>
+                      <td>
+                        <a
+                          className="label label-info update-cart-item"
+                          data-product=""
+                        >
+                          Update
+                        </a>
+                        <a
+                          className="label label-danger delete-cart-item"
+                          data-product=""
+                        >
+                          Delete
+                          </a>
+                          </td>
+                    </tr>
+                    )
+                  })
+                  }
+                 
                 </tbody>
                 <tfoot id="my-cart-footer">
                   <tr>
@@ -91,7 +87,7 @@ export default function Cart() {
             Add to cart successfully
           </div>
             </div>
-             </div>
+        
     </>
   )
 }

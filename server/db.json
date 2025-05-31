@@ -1,0 +1,37 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Pizza",
+            "image":"./images/image copy 3.png" ,
+            "price": 30,
+            "quantity": 0,
+            "detail": "Delicious cheese pizza, crispy thin crust.",
+            "disabled": true
+        },
+        {
+            "id": 2,
+            "name": "Hamburger",
+            "image":"./images/image copy 2.png",
+            "price": 15,
+            "detail": "American beef burger, with vegetables and special sauce.",
+            "quantity": 4
+        },
+        {
+            "id": 3,
+            "name": "Bread",
+            "image": "./images/image copy.png",
+            "price": 20,
+            "detail": "Crispy toast with garlic butter flavor.",
+            "quantity": 1
+        },
+        {
+            "id": 4,
+            "name": "Cake",
+            "image": "./images/image.png",
+            "price": 10,
+            "detail": "Traditional dishes with delicious flavors",
+            "quantity": 1
+        }
+    ]
+}

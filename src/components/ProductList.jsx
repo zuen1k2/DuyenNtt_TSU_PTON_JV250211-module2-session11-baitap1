@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 import Item from './Item'
+import { useDispatch, useSelector } from 'react-redux'
+import { PORT_BE } from '../evn';
+import actionGetListProduct from '../actions/productAction';
+import axios from 'axios';
 
 export default function ProductList() {
+  const dispatch = useDispatch();
+  const state = useSelector((state)=> state.product.listProduct);
+ 
+  const handleGetProduct = async()=> {
+    try {
+     
+      const res = await axios.get(`${PORT_BE}/products`);
+      dispatch(actionGetListProduct(res.data));
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+  useEffect(()=> {
+    handleGetProduct();
+  },[])
   return (
     <>
     <div className="container">
@@ -15,7 +34,15 @@ export default function ProductList() {
             <div className="panel-heading">
               <h1 className="panel-title">List Products</h1>
               </div>
-              <Item/>
+              <div>
+                {state && state.map((product, index)=> {
+                  return(
+                    <Item data={product} 
+                    key={product.id || index}/>
+                  )
+                })}
+              </div>
+            
               </div>
              
               </div>

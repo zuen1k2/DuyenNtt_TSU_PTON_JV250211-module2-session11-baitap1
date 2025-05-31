@@ -8,10 +8,14 @@ function App() {
 
   return (
     <>
-      <ProductList/>
-     <Cart/>
+    <div>
+      <ProductList />
+      <Cart />
+</div>
+
     </>
+    
   )
 }
 
-export default App
+export default App;
